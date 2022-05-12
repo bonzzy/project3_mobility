@@ -18,10 +18,13 @@ $ npm install
 ## Running the app
 
 ```bash
+# deploy migrations
+$ npm run migrations:run
+
 # development
 $ npm run start
 
-# watch mode
+# development with a watcher
 $ npm run start:dev
 
 # production mode
