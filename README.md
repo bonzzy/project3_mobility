@@ -84,7 +84,7 @@ curl --location --request POST 'http://localhost:3000/file' \
 curl --location --request GET 'http://localhost:3000/file/find?name=File&parentFolderId=f4b958c2-d0ab-4db2-a0dd-fb920a14b3c5&limit=2'
 ```
 
-### Find files by query and where name starts with *
+### Find files by query and where name starts with
 ```
 curl --location --request GET 'http://localhost:3000/file/find/starts-with/?parentFolderId=8e691f14-1f80-4262-8071-db4847ae082d&name=Fi'
 ```
