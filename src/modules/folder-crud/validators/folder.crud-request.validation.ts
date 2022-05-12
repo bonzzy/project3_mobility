@@ -1,17 +1,14 @@
-import { CrudRequestValidation } from '../../crud/interfaces/crud-request.validation';
 import * as Joi from 'joi';
 import { BadRequestException } from '@nestjs/common';
-import { MutableFolderFieldsEntity } from '../entity/mutable-folder-fields.entity';
+import { CrudRequestValidation } from '../../../core/crud/interfaces/crud-request.validation';
 
 export const createFolderSchema = Joi.object({
   name: Joi.string().required(),
   parentFolderId: Joi.string().optional(),
 });
 
-export class FolderCrudRequestValidation
-  implements CrudRequestValidation<MutableFolderFieldsEntity | string>
-{
-  create(value): void {
+export class FolderCrudRequestValidation implements CrudRequestValidation {
+  create(value: unknown): void {
     const validation = createFolderSchema.validate(value);
 
     if (validation.error) {
@@ -19,7 +16,7 @@ export class FolderCrudRequestValidation
     }
   }
 
-  deleteById(value): void {
+  deleteById(value: unknown): void {
     const validation = Joi.string().validate(value);
 
     if (validation.error) {
@@ -27,7 +24,7 @@ export class FolderCrudRequestValidation
     }
   }
 
-  getById(value): void {
+  getById(value: unknown): void {
     const validation = Joi.string().validate(value);
 
     if (validation.error) {
@@ -35,7 +32,7 @@ export class FolderCrudRequestValidation
     }
   }
 
-  update(value): void {
+  update(value: unknown): void {
     const validation = createFolderSchema.validate(value);
 
     if (validation.error) {

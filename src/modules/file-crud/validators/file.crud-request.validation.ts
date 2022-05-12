@@ -1,7 +1,6 @@
-import { CrudRequestValidation } from '../../crud/interfaces/crud-request.validation';
-import { MutableFileFieldsEntity } from '../entity/mutable-file-fields.entity';
 import * as Joi from 'joi';
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { CrudRequestValidation } from '../../../core/crud/interfaces/crud-request.validation';
 
 export const createFileSchema = Joi.object({
   name: Joi.string().required(),
@@ -16,10 +15,8 @@ export const updateFileSchema = Joi.object({
 });
 
 @Injectable()
-export class FileCrudRequestValidation
-  implements CrudRequestValidation<MutableFileFieldsEntity | string>
-{
-  create(value): void {
+export class FileCrudRequestValidation implements CrudRequestValidation {
+  create(value: unknown): void {
     const validation = createFileSchema.validate(value);
 
     if (validation.error) {
@@ -27,7 +24,7 @@ export class FileCrudRequestValidation
     }
   }
 
-  deleteById(value): void {
+  deleteById(value: unknown): void {
     const validation = Joi.string().validate(value);
 
     if (validation.error) {
@@ -35,7 +32,7 @@ export class FileCrudRequestValidation
     }
   }
 
-  getById(value): void {
+  getById(value: unknown): void {
     const validation = Joi.string().validate(value);
 
     if (validation.error) {
@@ -43,7 +40,7 @@ export class FileCrudRequestValidation
     }
   }
 
-  update(value): void {
+  update(value: unknown): void {
     const validation = updateFileSchema.validate(value);
 
     if (validation.error) {

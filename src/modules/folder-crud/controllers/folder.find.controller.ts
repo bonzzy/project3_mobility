@@ -3,9 +3,7 @@ import {
   FindFolderQuery,
   FolderFindService,
 } from '../services/folder.find.service';
-import {
-  FolderQueryValidation,
-} from '../validators/folder.query.validation';
+import { FolderQueryValidation } from '../validators/folder.query.validation';
 
 @Controller()
 export class FolderFindController {

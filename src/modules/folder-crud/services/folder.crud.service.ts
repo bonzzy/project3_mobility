@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CrudService } from '../../crud/interfaces/crud.service';
 import { MutableFolderFieldsEntity } from '../entity/mutable-folder-fields.entity';
 import { PrismaService } from '../../postgres-prisma/services/prisma.service';
 import { Folder } from '@prisma/client';
+import { CrudService } from '../../../core/crud/interfaces/crud.service';
 
 @Injectable()
 export class FolderCrudService

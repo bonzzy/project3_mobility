@@ -3,10 +3,10 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { CrudService } from '../../crud/interfaces/crud.service';
 import { MutableFileFieldsEntity } from '../entity/mutable-file-fields.entity';
 import { PrismaService } from '../../postgres-prisma/services/prisma.service';
 import { File, Prisma } from '@prisma/client';
+import { CrudService } from '../../../core/crud/interfaces/crud.service';
 
 @Injectable()
 export class FileCrudService implements CrudService<MutableFileFieldsEntity> {

@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import * as request from 'supertest';
 import { CoreModule } from '../../src/modules/core/core.module';
-import { CrudController } from '../../src/modules/crud/controllers/crud.controller';
-import { CrudService } from '../../src/modules/crud/interfaces/crud.service';
-import { CrudRequestValidation } from '../../src/modules/crud/interfaces/crud-request.validation';
-import { BaseCrudEntity } from '../../src/modules/crud/interfaces/base.crud.entity';
 import { ApiResponseFactory } from '../../src/modules/core/helpers/api.response.factory';
 import FunctionPropertyNames = jest.FunctionPropertyNames;
+import { CrudService } from '../../src/core/crud/interfaces/crud.service';
+import { CrudRequestValidation } from '../../src/core/crud/interfaces/crud-request.validation';
+import { CrudController } from '../../src/core/crud/controllers/crud.controller';
+import { BaseCrudEntity } from '../../src/core/crud/interfaces/base.crud.entity';
 
 interface MockEntity {
   value: string;
@@ -20,7 +20,7 @@ interface MockEntity {
 describe('(POST) generic crud', function () {
   let app: INestApplication;
   let crudService: CrudService<MockEntity>;
-  let crudRequestValidation: CrudRequestValidation<MockEntity>;
+  let crudRequestValidation: CrudRequestValidation;
   let apiResponseFactory: ApiResponseFactory;
 
   beforeEach(async () => {
@@ -48,7 +48,7 @@ describe('(POST) generic crud', function () {
 
     crudService = app.get<CrudService<MockEntity>>('CrudService');
     apiResponseFactory = app.get<ApiResponseFactory>(ApiResponseFactory);
-    crudRequestValidation = app.get<CrudRequestValidation<MockEntity>>(
+    crudRequestValidation = app.get<CrudRequestValidation>(
       'CrudRequestValidation',
     );
   });

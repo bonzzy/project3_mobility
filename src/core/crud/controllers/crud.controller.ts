@@ -13,14 +13,14 @@ import {
 } from '@nestjs/common';
 import { CrudService } from '../interfaces/crud.service';
 import { CrudRequestValidation } from '../interfaces/crud-request.validation';
-import { ApiResponseFactory } from '../../core/helpers/api.response.factory';
+import { ApiResponseFactory } from '../../../modules/core/helpers/api.response.factory';
 
 @Controller()
 export class CrudController<T> {
   constructor(
     @Inject('CrudService') private crudService: CrudService<T>,
     @Inject('CrudRequestValidation')
-    private crudRequestValidation: CrudRequestValidation<T>,
+    private crudRequestValidation: CrudRequestValidation,
     private apiResponseFactory: ApiResponseFactory,
   ) {}
 

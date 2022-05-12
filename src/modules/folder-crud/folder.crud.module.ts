@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { CrudController } from '../crud/controllers/crud.controller';
 import { FolderCrudService } from './services/folder.crud.service';
 import { PostgresPrismaModule } from '../postgres-prisma/postgres.prisma.module';
 import { FolderCrudRequestValidation } from './validators/folder.crud-request.validation';
@@ -7,11 +6,11 @@ import { FolderFindController } from './controllers/folder.find.controller';
 import { FolderFindService } from './services/folder.find.service';
 import { CoreModule } from '../core/core.module';
 import { FolderQueryValidation } from './validators/folder.query.validation';
-import { CrudModule } from '../crud/crud.module';
+import { CrudController } from '../../core/crud/controllers/crud.controller';
 
 @Module({
-  imports: [PostgresPrismaModule, CoreModule, CrudModule],
-  controllers: [FolderFindController],
+  imports: [PostgresPrismaModule, CoreModule],
+  controllers: [FolderFindController, CrudController],
   providers: [
     {
       provide: 'CrudService',
