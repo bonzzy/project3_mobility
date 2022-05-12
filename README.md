@@ -18,7 +18,10 @@ $ npm install
 ## Running the app
 
 ```bash
-# deploy migrations
+# run local db (make sure that your local Docker is up and running)
+$ cd docker && docker-compose up
+
+# deploy database migrations
 $ npm run migrations:run
 
 # development
