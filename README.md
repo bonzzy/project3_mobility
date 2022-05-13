@@ -50,10 +50,10 @@ $ npm run test:cov
 ## Swagger API docs
 
 Folder API
-> `http://localhost/api/folder`
+> `http://localhost:3000/api/folder`
 
 File API
-> `http://localhost/api/file`
+> `http://localhost:3000/api/file`
 
 ## How to use the filesystem API
 
