@@ -12,6 +12,11 @@ import {
 } from '../services/file.find.service';
 import { FileQueryValidation } from '../validators/file.query.validation';
 import { ApiResponseFactory } from '../../core/helpers/api.response.factory';
+import { ApiBody } from '@nestjs/swagger';
+import {
+  FileFindRouteSchema,
+  FileFindStartsWithRouteSchema,
+} from '../swagger/fileFindRouteSchema';
 
 @Controller()
 export class FileFindController {
@@ -21,6 +26,7 @@ export class FileFindController {
     private apiResponseFactory: ApiResponseFactory,
   ) {}
 
+  @ApiBody({ type: FileFindRouteSchema })
   @Get('find/')
   async findByFilename(@Query() whereQuery: FindFileQuery) {
     const validationResult = this.fileQueryValidation.find(whereQuery);
@@ -41,6 +47,7 @@ export class FileFindController {
     );
   }
 
+  @ApiBody({ type: FileFindStartsWithRouteSchema })
   @Get('find/starts-with/')
   async findByFilenameStartsWith(
     @Query() whereQuery: FindFilenameStartsWithQuery,

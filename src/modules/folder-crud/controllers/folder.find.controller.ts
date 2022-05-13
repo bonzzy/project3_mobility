@@ -4,6 +4,8 @@ import {
   FolderFindService,
 } from '../services/folder.find.service';
 import { FolderQueryValidation } from '../validators/folder.query.validation';
+import { ApiBody } from '@nestjs/swagger';
+import { FolderFindRouteSchema } from '../swagger/fileFindRouteSchema';
 
 @Controller()
 export class FolderFindController {
@@ -12,6 +14,7 @@ export class FolderFindController {
     private folderQueryValidation: FolderQueryValidation,
   ) {}
 
+  @ApiBody({ type: FolderFindRouteSchema })
   @Get('find')
   private findByQuery(@Query() whereQuery: FindFolderQuery) {
     const validationResult = this.folderQueryValidation.find(whereQuery);
