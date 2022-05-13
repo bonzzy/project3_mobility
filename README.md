@@ -47,6 +47,13 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Swagger API docs
+
+Folder API
+> `http://localhost/api/folder`
+
+File API
+> `http://localhost/api/file`
 
 ## How to use the filesystem API
 
