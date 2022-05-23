@@ -19,7 +19,10 @@ $ npm install
 
 ```bash
 # run local db (make sure that your local Docker is up and running)
-$ cd docker && docker-compose up
+$ cd docker && docker-compose up && cd -
+
+# prepare the env values (preffered way is to create a file in root .env with the content taken from .env.example file)
+$ cp .env.example .env
 
 # deploy database migrations
 $ npm run migrations:run
